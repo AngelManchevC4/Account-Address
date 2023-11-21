@@ -1,10 +1,15 @@
+<head>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+</head>
+
 <isscript>
         var assets = require('*/cartridge/scripts/assets.js');
         assets.addJs('/js/password.js');
+        assets.addJs('/js/reCaptcha.js');
         assets.addCss('/css/password.css');
 </isscript>
 
-<form action="${pdict.createAccountUrl}" class="registration" method="POST" name="${pdict.profileForm.htmlName}">
+<form id="registrationForm" action="${pdict.createAccountUrl}" class="registration" method="POST" name="${pdict.profileForm.htmlName}">
 
     <div class="form-group
         <isif condition=" ${!!pdict.profileForm.customer.email.mandatory === true}">required</isif>">
@@ -43,7 +48,6 @@
         </div>
     </div>
 
-
     <div class="form-group custom-control custom-checkbox">
         <input type="checkbox" class="custom-control-input" id="add-to-email-list" <isprint
             value=${pdict.profileForm.customer.addtoemaillist.attributes} encoding="off" />
@@ -55,9 +59,15 @@
 
     <input type="hidden" name="${pdict.csrf.tokenName}" value="${pdict.csrf.token}" />
 
-    <button type="submit" class="btn btn-block btn-primary">
+    <button id="reCaptchaButton" type="submit" class="g-recaptcha btn btn-block btn-primary" data-sitekey="${pdict.reCaptcha.siteKey || ''}"
+        data-callback='reCaptcha' data-action='submit' data-verify-url="${pdict.reCaptcha.verifyUrl || ''}">
         ${Resource.msg('button.createaccount.registration', 'registration', null)}
     </button>
+
+    <iscomment> <button type="submit" class="btn btn-block btn-primary">
+            ${Resource.msg('button.createaccount.registration', 'registration', null)}
+        </button> </iscomment>
+
     <div class="privacy-policy">
         ${Resource.msg('description.privacypolicy.registration', 'registration', null)}
         <a href="${'#'}">
