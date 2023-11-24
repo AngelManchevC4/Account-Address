@@ -1,0 +1,22 @@
+<div class="form-group">
+    <label class="form-control-label" for="shipmentSelector-${lineItem ? lineItem.UUID : 'default'}">
+        ${Resource.msg('heading.ship.to.address', 'checkout', null)}
+    </label>
+
+    <select id="shipmentSelector-${lineItem ? lineItem.UUID : 'default'}" name="shipmentSelector"
+        class="addressSelector form-control custom-select"
+        data-create-shipment-url="${URLUtils.https('CheckoutAddressServices-CreateNewAddress')}">
+        <isinclude template="checkout/shipping/shipmentSelectorOptions" />
+    </select>
+
+    <h1>
+        <isprint value="${JSON.stringify(address)}" encoding="on" />
+    </h1>
+
+    <div class="invalid-feedback"></div>
+    <div class="row">
+        <iscomment> <isprint value="${JSON.stringify(pdict.customer.addresses)}" encoding="on" /> </iscomment>
+        <button class="col-6 text-center btn-show-details btn" type="button">${Resource.msg('action.update.address', 'checkout', null)}</button>
+        <button class="col-6 text-center btn-add-new btn" type="button">${Resource.msg('action.add.new', 'checkout', null)}</button>
+    </div>
+</div>

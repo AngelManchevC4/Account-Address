@@ -69,6 +69,7 @@ server.replace(
         if (req.currentCustomer.addressBook && req.currentCustomer.addressBook.preferredAddress) {
             var shipments = currentBasket.shipments;
             preferredAddress = req.currentCustomer.addressBook.preferredAddress;
+            preferredAddress.vat = req.currentCustomer.addressBook.preferredAddress.raw.custom.vat
 
             collections.forEach(shipments, function (shipment) {
                 if (!shipment.shippingAddress) {
