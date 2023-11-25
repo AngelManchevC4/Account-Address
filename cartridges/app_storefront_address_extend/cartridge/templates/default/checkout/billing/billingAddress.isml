@@ -1,3 +1,9 @@
+
+<isscript>
+    var assets = require('*/cartridge/scripts/assets.js');
+    assets.addJs('/js/radioButtons.js');
+</isscript>
+
 <isset name="billingFields" value="${pdict.forms.billingForm.addressFields}" scope="page"/>
 <div class="row">
     <div class="col-sm-6">
