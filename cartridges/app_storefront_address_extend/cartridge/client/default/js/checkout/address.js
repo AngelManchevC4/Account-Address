@@ -1,16 +1,6 @@
-'use strict';
+var base = require("base/checkout/address")
 
-var base = require('base/checkout/address')
-
-/**
- * returns a formed <option /> element
- * @param {Object} shipping - the shipping object (shipment model)
- * @param {boolean} selected - current shipping is selected (for PLI)
- * @param {order} order - the Order model
- * @param {Object} [options] - options
- * @returns {Object} - the jQuery / DOMElement
- */
-base.optionValueForAddress = function (shipping, selected, order, options) {
+base.methods.optionValueForAddress = function (shipping, selected, order, options) {
     var safeOptions = options || {};
     var isBilling = safeOptions.type && safeOptions.type === 'billing';
     var className = safeOptions.className || '';
@@ -45,6 +35,12 @@ base.optionValueForAddress = function (shipping, selected, order, options) {
         if (shippingAddress.lastName) {
             title.push(shippingAddress.lastName);
         }
+        if (shippingAddress.companyName) {
+            title.push(shippingAddress.companyName);
+        }
+        if (shippingAddress.vat) {
+            title.push(shippingAddress.vat);
+        }
         if (shippingAddress.address1) {
             title.push(shippingAddress.address1);
         }
@@ -68,12 +64,6 @@ base.optionValueForAddress = function (shipping, selected, order, options) {
             title.push('-');
             title.push(safeShipping.selectedShippingMethod.displayName);
         }
-        if (shippingAddress.companyName) {
-            title.push(shippingAddress.companyName);
-        }
-        if (shippingAddress.vat) {
-            title.push(shippingAddress.vat);
-        }
 
         if (title.length > 2) {
             title = title.join(' ');
@@ -86,15 +76,15 @@ base.optionValueForAddress = function (shipping, selected, order, options) {
     var keyMap = {
         'data-first-name': 'firstName',
         'data-last-name': 'lastName',
+        'data-company-name':'companyName',
+        'data-vat':'vat',
         'data-address1': 'address1',
         'data-address2': 'address2',
         'data-city': 'city',
         'data-state-code': 'stateCode',
         'data-postal-code': 'postalCode',
         'data-country-code': 'countryCode',
-        'data-phone': 'phone',
-        'data-company-name': 'companyName',
-        'data-vat': 'vat'
+        'data-phone': 'phone'
     };
     $.each(keyMap, function (key) {
         var mappedKey = keyMap[key];
@@ -130,10 +120,12 @@ base.optionValueForAddress = function (shipping, selected, order, options) {
  * @param {Form} form - the Form element
  * @returns {Object} - a JSON object with all values
  */
-base.getAddressFieldsFromUI = function (form) {
+base.methods.getAddressFieldsFromUI=function(form) {
     var address = {
         firstName: $('input[name$=_firstName]', form).val(),
         lastName: $('input[name$=_lastName]', form).val(),
+        companyName: $('select[name$=_companyName]', form).val(),
+        vat: $('input[name$=_vat]', form).val(),
         address1: $('input[name$=_address1]', form).val(),
         address2: $('input[name$=_address2]', form).val(),
         city: $('input[name$=_city]', form).val(),
@@ -141,8 +133,6 @@ base.getAddressFieldsFromUI = function (form) {
         stateCode: $('select[name$=_stateCode],input[name$=_stateCode]', form).val(),
         countryCode: $('select[name$=_country]', form).val(),
         phone: $('input[name$=_phone]', form).val(),
-        companyName: $('select[name$=_companyName]', form).val(),
-        vat: $('input[name$=_vat]', form).val()
     };
     return address;
 }
