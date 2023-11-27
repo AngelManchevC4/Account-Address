@@ -4,8 +4,6 @@ const reCaptcha = function (token) {
     let $url = $("#reCaptchaButton").attr("data-verify-url").valueOf();
     const $form = $('#registrationForm');
 
-    console.log(token);
-
     $.spinner().start();
 
     $.ajax({

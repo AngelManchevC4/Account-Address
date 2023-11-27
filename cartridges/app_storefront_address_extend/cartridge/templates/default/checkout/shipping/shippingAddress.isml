@@ -43,7 +43,7 @@
     </div>
 </div>
 
-<div class="row businessAddress d-none">
+<div class="row businessAddress js-business-address d-none">
     <div class="col-sm-6">
         <div class="form-group
             ${addressFields.companyName.mandatory === true ? 'required' : ''}

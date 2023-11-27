@@ -1,6 +1,9 @@
 
-const radioButtons = document.querySelectorAll('.form-radio-button');
-const businessAddress = document.querySelector('.businessAddress')
+const radioButtons = document.querySelectorAll('.js-form-radio-button');
+const businessAddress = document.querySelector('.js-business-address');
+const displayNone = 'd-none';
+const privateAddressString = 'Private Address';
+const businessAddressString = 'Business Address';
 
 radioButtons.forEach(radioButton => {
     radioButton.onchange = () => {
@@ -8,11 +11,11 @@ radioButtons.forEach(radioButton => {
         const addressType = radioButton.value;
 
         switch (addressType) {
-            case "Private Address":
-                businessAddress.classList.add('d-none');
+            case privateAddressString:
+                businessAddress.classList.add(displayNone);
                 break;
-            case "Business Address":
-                businessAddress.classList.remove('d-none');
+            case businessAddressString:
+                businessAddress.classList.remove(displayNone);
                 break;
         }
     }

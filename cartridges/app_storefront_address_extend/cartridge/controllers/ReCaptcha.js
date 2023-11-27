@@ -6,19 +6,13 @@
 
 var server = require('server');
 
-server.post('Verify', server.middleware.https, function (req, res, next) {
+var reCaptchaConfig = require("~/cartridge/scripts/middlewares/reCaptcha");
 
-    var Site = require('dw/system/Site');
+server.post('Verify', server.middleware.https, reCaptchaConfig.configureRecaptcha, function (req, res, next) {
 
     var token = req.form.token
 
-    var { reCaptchaSiteKey, reCaptchaSecretKey, reCaptchaThreshold } = Site.getCurrent().getPreferences().custom;
-
-    var reCaptchaConfig = {
-        siteKey: reCaptchaSiteKey,
-        threshold: reCaptchaThreshold,
-        secretKey: reCaptchaSecretKey,
-    };
+    var reCaptchaConfig = res.getViewData().reCaptcha;
 
     var reCaptcha = require("~/cartridge/scripts/services/reCaptcha");
 

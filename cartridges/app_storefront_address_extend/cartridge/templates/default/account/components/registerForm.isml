@@ -39,8 +39,8 @@
                 aria-describedby="form-password-error" autocomplete="off" <isprint
                 value=${pdict.profileForm.login.password.attributes} encoding="off" />>
 
-            <div class="input-group-addon">
-                <a href=""><i class="fa fa-eye-slash fa-eye--custom" aria-hidden="true"></i></a>
+            <div class="input-group-addon ">
+                <a href=""><i class="fa fa-eye-slash fa-eye--custom position-absolute" aria-hidden="true"></i></a>
             </div>
 
             <div class="invalid-feedback" id="form-password-error"></div>

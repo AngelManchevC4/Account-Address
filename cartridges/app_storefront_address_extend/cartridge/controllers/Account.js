@@ -16,10 +16,6 @@ server.extend(module.superModule);
  * @param {string} email - email string to check if valid
  * @returns {boolean} Whether email is valid
  */
-function validateEmail(email) {
-    var regex = /^[\w.%+-]+@[\w.-]+\.[\w]{2,6}$/;
-    return regex.test(email);
-}
 
 server.replace(
     'SubmitRegistration',

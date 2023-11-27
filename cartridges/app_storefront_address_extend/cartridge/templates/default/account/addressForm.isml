@@ -14,7 +14,7 @@
     <div class="invalid-feedback"></div>
 </div>
 
-<div class="row businessAddress d-none">
+<div class="row businessAddress js-business-address d-none">
     <!-- Company Name -->
     <div class="col-6">
         <div class="form-group">

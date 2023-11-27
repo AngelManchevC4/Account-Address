@@ -1,15 +1,18 @@
 $(document).ready(function(){
 
+    const $radioButtonBusiness = $(".js-form-radio-button-business") ;
+    const $radioButtonPrivate = $('.js-form-radio-button-private') ; 
+
     var $companyName = $('input[name$=_companyName]').val();
     var $vat = $('input[name$=_vat]').val();
 
     if($companyName && $vat){
-        $("#flexRadioDefault1").removeAttr('checked')
+        $radioButtonPrivate.removeAttr('checked')
         $('.businessAddress').removeClass('d-none');
-        $("#flexRadioDefault2").attr('checked', 'checked');
+        $radioButtonBusiness.attr('checked', 'checked');
     }else{
-        $("#flexRadioDefault2").removeAttr('checked')
+        $radioButtonBusiness.removeAttr('checked')
         $('.businessAddress').addClass('d-none');
-        $("#flexRadioDefault1").attr('checked', 'checked');
+        $radioButtonPrivate.attr('checked', 'checked');
     }
 })

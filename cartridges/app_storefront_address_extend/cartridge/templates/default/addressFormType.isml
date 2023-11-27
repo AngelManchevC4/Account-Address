@@ -11,14 +11,14 @@
 <div class="row mt-3 form-radio-button">
 
     <div class="form-check col-6 text-center shippingAddressCheckbox">
-        <input class="form-radio-button" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="Private Address" checked>
+        <input class="form-radio-button js-form-radio-button js-form-radio-button-private" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="Private Address" checked>
         <label class="form-check-label" for="flexRadioDefault1">
             ${Resource.msg("address.private.label", "address", null)}
         </label>
     </div>
 
     <div class="form-check col-6 text-center shippingAddressCheckbox">
-        <input class="form-radio-button" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="Business Address">
+        <input class="form-radio-button js-form-radio-button js-form-radio-button-business" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="Business Address">
         <label class="form-check-label" for="flexRadioDefault2">
             ${Resource.msg("address.business.label", "address", null)}
         </label>
