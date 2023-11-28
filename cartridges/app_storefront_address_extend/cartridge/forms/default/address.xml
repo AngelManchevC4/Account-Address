@@ -4,7 +4,8 @@
     <field formid="companyName" label="label.input.companyname" type="string" mandatory="false"
         missing-error="error.message.required" />
     <field formid="vat" label="label.input.vat" type="string" mandatory="false"
-        missing-error="error.message.required" />
+        missing-error="error.message.required"
+        regexp="^[A-Za-z]{2}\d{8}$" />
 
     <field formid="addressId" label="label.input.addressid" type="string" mandatory="true"
         max-length="20" missing-error="error.message.required" range-error="error.message.20orless" />
